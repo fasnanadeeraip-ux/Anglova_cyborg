@@ -243,6 +243,228 @@
         <ul style="margin-left: 20px; line-height: 2;">
             <li><a href="report.pdf">Project Report (PDF)</a></li>
             <li><a href="slides.pdf">Presentation Slides (PDF)</a></li>
+            <li><a href="https://github.com/fasnanadeeraip-ux/Anglova_cyborg">Source Code Repository</a></li>
+            <li><a href="supplementary/">Supplementary Materials</a></li>
+        </ul>
+    </div>
+
+</div>
+
+<<footer>
+    <p>Anglova CybORG Project &copy; 2026</p>
+    <p>Built on the <a href="https://github.com/cage-challenge/cyborg">CybORG Framework</a></p>
+</footer>
+
+</body>
+</html>            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #1e3c72;
+            border-bottom: 3px solid #2a5298;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .section h3 {
+            color: #2a5298;
+            margin: 25px 0 15px 0;
+        }
+        .graph-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .graph-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .graph-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .graph-card p {
+            margin-top: 15px;
+            font-size: 0.95em;
+            color: #555;
+            text-align: left;
+        }
+        .da-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .da-table th, .da-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .da-table th {
+            background: #1e3c72;
+            color: white;
+        }
+        .da-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        .highlight {
+            background: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #2a5298;
+            margin: 15px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .badge-red { background: #ffebee; color: #c62828; }
+    </style>
+</head>
+<body>
+
+<<header>
+    <h1>Anglova CybORG</h1>
+    <p>Scalable Multi-Agent Cyber-Physical Defense Simulation</p>
+    <p style="margin-top: 15px; font-size: 0.95em;">
+        <span class="badge badge-blue">1/2/4/8/16 Defenders</span>
+        <span class="badge badge-red">1-4 Attackers</span>
+        <span class="badge badge-blue">3 Collision Modes</span>
+    </p>
+</header>
+
+<div class="container">
+
+    <div class="section">
+        <h2>Overview</h2>
+        <p>Anglova CybORG investigates how scalable Blue defender teams perform against coordinated Red attackers in cyber-physical convoy scenarios. The project analyzes 20 unique defender-to-attacker combinations across three collision modes: <strong>spread</strong>, <strong>all_to_1</strong>, and <strong>pairwise</strong>.</p>
+        
+        <div class="highlight">
+            <strong>Key Question:</strong> How does defense performance scale from 1D:1A to 16D:4A, and what is the impact of collision degradation when multiple attackers converge on single defenders?
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Defender-Attacker Matrix</h2>
+        <table class="da-table">
+            <tr>
+                <th>Defenders \ Attackers</th>
+                <th>1A</th>
+                <th>2A</th>
+                <th>3A</th>
+                <th>4A</th>
+            </tr>
+            <tr><td><strong>1D</strong></td><td>1:1</td><td>1:2</td><td>1:3</td><td>1:4</td></tr>
+            <tr><td><strong>2D</strong></td><td>2:1</td><td>1:1</td><td>2:3</td><td>1:2</td></tr>
+            <tr><td><strong>4D</strong></td><td>4:1</td><td>2:1</td><td>4:3</td><td>1:1</td></tr>
+            <tr><td><strong>8D</strong></td><td>8:1</td><td>4:1</td><td>8:3</td><td>2:1</td></tr>
+            <tr><td><strong>16D</strong></td><td>16:1</td><td>8:1</td><td>16:3</td><td>4:1</td></tr>
+        </table>
+        <p><em>Ratios indicate defender advantage. Green zones = high survival probability; Red zones = high compromise risk.</em></p>
+    </div>
+
+    <div class="section">
+        <h2>Performance Results</h2>
+
+        <h3>Defense Survival Rate by D:A Ratio</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/defense_survival_da_ratio.png" alt="Defense Survival Rate">
+                <p><strong>Figure 1:</strong> Blue defender survival rate across all 20 D:A combinations. Survival improves with higher D:A ratios, but diminishing returns appear beyond 4D:1A. The all_to_1 mode shows the steepest degradation at low D:A ratios.</p>
+            </div>
+        </div>
+
+        <h3>Attack Success Rate by D:A Ratio</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/attack_success_da_ratio.png" alt="Attack Success Rate">
+                <p><strong>Figure 2:</strong> Red attacker success rate across all 20 D:A combinations. Success drops sharply as defender count increases, with 16D configurations showing near-zero success in spread mode.</p>
+            </div>
+        </div>
+
+        <h3>Collision Degradation Analysis</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/collision_degradation_attackers.png" alt="Collision Degradation">
+                <p><strong>Figure 3:</strong> Performance degradation as a function of simultaneous Red attackers targeting the same Blue defender. Degradation intensifies with 3A and 4A in all_to_1 mode, showing non-linear decay curves.</p>
+            </div>
+            <div class="graph-card">
+                <img src="graphs/collision_comparison_4d4a.png" alt="Collision Mode Comparison">
+                <p><strong>Figure 4:</strong> Side-by-side comparison of spread, all_to_1, and pairwise modes for 4D:4A. All_to_1 produces the most asymmetric outcome with one defender overwhelmed while others survive.</p>
+            </div>
+        </div>
+
+        <h3>Scaling Efficiency</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/scaling_efficiency.png" alt="Scaling Efficiency">
+                <p><strong>Figure 5:</strong> Marginal defensive gain per additional defender. Efficiency peaks at 4D for 1-2A scenarios, with 8D and 16D showing reduced marginal returns against 3-4A.</p>
+            </div>
+        </div>
+
+        <h3>Scenario Timelines</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/timeline_4d4a_allto1.png" alt="4D:4A All-to-1 Timeline">
+                <p><strong>Figure 6:</strong> Event timeline for 4D:4A in all_to_1 mode. All four Red attackers converge on one Blue defender, causing rapid degradation while other three defenders remain idle.</p>
+            </div>
+            <div class="graph-card">
+                <img src="graphs/timeline_16d4a_spread.png" alt="16D:4A Spread Timeline">
+                <p><strong>Figure 7:</strong> Event timeline for 16D:4A in spread mode. Four Red attackers distribute across sixteen defenders, resulting in minimal per-defender pressure and high survival rates.</p>
+            </div>
+        </div>
+
+        <h3>Heatmaps</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/survival_heatmap_da.png" alt="Survival Heatmap">
+                <p><strong>Figure 8:</strong> Heatmap of defender survival rates across all D:A combinations. Darker cells indicate higher survival. The 16D column shows consistently high survival regardless of attacker count.</p>
+            </div>
+            <div class="graph-card">
+                <img src="graphs/attack_success_heatmap_da.png" alt="Attack Success Heatmap">
+                <p><strong>Figure 9:</strong> Heatmap of Red attack success rates across all D:A combinations. Success concentrated in low-D high-A regions, particularly 1D:4A and 2D:4A.</p>
+            </div>
+        </div>
+
+        <h3>Resilience Metrics</h3>
+        <div class="graph-grid">
+            <div class="graph-card">
+                <img src="graphs/time_to_compromise.png" alt="Time to Compromise">
+                <p><strong>Figure 10:</strong> Average time until first Blue defender compromise. Higher D:A ratios extend time-to-compromise, with 16D configurations showing 3-5x longer resilience than 1D.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Findings</h2>
+        <ul style="margin-left: 20px; line-height: 2;">
+            <li><strong>Diminishing Returns:</strong> Beyond 4D:1A, adding defenders yields minimal survival improvement</li>
+            <li><strong>Critical Threshold:</strong> 1D:4A and 2D:4A represent high-risk configurations with >80% compromise rate</li>
+            <li><strong>Mode Sensitivity:</strong> all_to_1 mode creates extreme variance — one defender fails rapidly while others are untouched</li>
+            <li><strong>Optimal Configuration:</strong> 4D:2A in spread mode achieves 95%+ survival with efficient resource use</li>
+            <li><strong>Collision Penalty:</strong> Each additional attacker on the same target reduces per-attacker effectiveness by ~15%</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Resources</h2>
+        <ul style="margin-left: 20px; line-height: 2;">
+            <li><a href="report.pdf">Project Report (PDF)</a></li>
+            <li><a href="slides.pdf">Presentation Slides (PDF)</a></li>
             <li><a href="https://github.com/yourusername/Anglova_cyborg">Source Code Repository</a></li>
             <li><a href="supplementary/">Supplementary Materials</a></li>
         </ul>
